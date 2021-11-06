@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         //06.11.2021
-        /*
+        /* 12:40 - 13:20
+
         * TASK 4 - PROJECT
         * write class called BankAccount
         * it must have:
