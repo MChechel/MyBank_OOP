@@ -78,6 +78,15 @@ public class BankAccount {
         }
 
     }
+    public void depositMoney(float amount,String code){
+        //it is silent deposit for transfer method;
+        if (this.accStatus){
+                    if (code.equals(this.pinCode)){
+                        this.accountAmount+=amount;
+                    }
+                }
+            }
+
     public void withdrawMoney(float amount){
         //each method will have to check if account is active or blocked
         if (this.accStatus){
@@ -105,9 +114,28 @@ public class BankAccount {
             System.out.println("Your account is blocked, please contact your bank!");
         }
     }
-    public void transferMoney(String accountNumber,float amount){
-
+    public void transferMoney(Bank theBank,String accountNumber,float amount) {
+        //what I cannot get, is what should be connection between accounts without commons system such as bank or anything else.
+    for (BankAccount a:theBank.getMainAccounts()){
+        //System.out.println(a.toString());
+        if (a.getAccountNumber().equals(accountNumber)){
+            this.setAccountAmount(this.accountAmount-amount);
+            System.out.println("The account name is "+this.getName()+". New amount is "+this.getAccountAmount());
+            a.depositMoney(amount,a.getPinCode());
+            System.out.println("The account name is "+a.getName()+". New amount is "+a.getAccountAmount());
+        }
+    }
     }
 
-
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "name='" + name + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", accountAmount=" + accountAmount +
+                ", bankName='" + bankName + '\'' +
+                ", pinCode='" + pinCode + '\'' +
+                ", accStatus=" + accStatus +
+                '}';
+    }
 }

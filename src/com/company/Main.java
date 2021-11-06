@@ -18,9 +18,9 @@ public class Main {
         *
         * methods:
         * depositMoney
-        * transferMoney
         * withdrawMoney
         *
+         * transferMoney
         * */
     }
 }
