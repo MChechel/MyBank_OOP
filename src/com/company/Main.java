@@ -36,7 +36,7 @@ public class Main {
         getTotalFixedAmount
 
         add the 5$ from sender account when transfer is being made
-
         */
+
     }
 }

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.bank;
 
 import java.util.Scanner;
 
@@ -128,7 +128,7 @@ public class BankAccount {
         }
     }
     public void transferMoney(Bank theBank,String accountNumber,float amount) {
-        //what I cannot get, is what should be connection between accounts without commons system such as bank or anything else.
+       if (this.accStatus){
     for (BankAccount a:theBank.getMainAccounts()){
         //System.out.println(a.toString());
         if (a.getAccountNumber().equals(accountNumber)){
@@ -141,6 +141,9 @@ public class BankAccount {
             System.out.println("The account name is "+a.getName()+". New amount is "+a.getAccountAmount());
         }
     }
+       }else {
+           System.out.println("Your account is blocked, please contact your bank!");
+       }
     }
 
     @Override
