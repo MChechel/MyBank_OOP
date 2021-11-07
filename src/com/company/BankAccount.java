@@ -10,14 +10,29 @@ public class BankAccount {
     private String pinCode;
     private boolean accStatus = true;
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        accountType = accountType.toLowerCase();
+        if ((accountType.equals("current"))|(accountType.equals("savings"))|(accountType.equals("fixed"))){
+        this.accountType = accountType;
+        }else System.out.println("Please check the account type...you entered wrong value");
+    }
+    private String accountType;
     public BankAccount() {
     }
-    public BankAccount(String name, String accountNumber, float accountAmount, String bankName, String pinCode) {
+    public BankAccount(String name, String accountNumber, float accountAmount, String pinCode,String accountType) {
         this.name = name;
         this.accountNumber = accountNumber;
         this.accountAmount = accountAmount;
         this.bankName = bankName;
         this.pinCode = pinCode;
+        accountType = accountType.toLowerCase();
+        if ((accountType.equals("current"))|(accountType.equals("savings"))|(accountType.equals("fixed"))){
+            this.accountType = accountType;
+        }else System.out.println("Please check the account type...you entered wrong value");
     }
     public String getName() {
         return name;
@@ -41,7 +56,7 @@ public class BankAccount {
         return bankName;
     }
     public void setBankName(String bankName) {
-        this.bankName = bankName;
+        this.bankName =bankName;
     }
     public String getPinCode() {
         return pinCode;
@@ -49,7 +64,6 @@ public class BankAccount {
     public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
     }
-
     public void depositMoney(float amount){
         //each method will ahve to check if account is active or blocked
         if (this.accStatus){
@@ -86,7 +100,6 @@ public class BankAccount {
                     }
                 }
             }
-
     public void withdrawMoney(float amount){
         //each method will have to check if account is active or blocked
         if (this.accStatus){
@@ -119,7 +132,10 @@ public class BankAccount {
     for (BankAccount a:theBank.getMainAccounts()){
         //System.out.println(a.toString());
         if (a.getAccountNumber().equals(accountNumber)){
-            this.setAccountAmount(this.accountAmount-amount);
+            // updated - now include charge if the banks are different
+            if (this.getBankName().equals(a.getBankName())){
+                this.setAccountAmount(this.accountAmount-amount);
+            }   else this.setAccountAmount(this.accountAmount-amount-theBank.getCharge());
             System.out.println("The account name is "+this.getName()+". New amount is "+this.getAccountAmount());
             a.depositMoney(amount,a.getPinCode());
             System.out.println("The account name is "+a.getName()+". New amount is "+a.getAccountAmount());

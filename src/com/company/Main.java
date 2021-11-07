@@ -16,11 +16,27 @@ public class Main {
         * - name of Bank
         * - pin code(account password)
         *
+        EDIT 1 : add account status: current - savings - fixed
+
         * methods:
         * depositMoney
         * withdrawMoney
+        * transferMoney
         *
-         * transferMoney
-        * */
+        *Class BANK - 9:30 - 10:30
+        * properties:
+            name of the bank
+            the list of bank accounts available;
+            the charge on transfers made from one account to the other(only if bank is not the same)
+
+        * METHODS
+        getTotalMoneyInBank;
+        getTotalSavingsAmount;
+        getTotalCurrentAmount
+        getTotalFixedAmount
+
+        add the 5$ from sender account when transfer is being made
+
+        */
     }
 }
