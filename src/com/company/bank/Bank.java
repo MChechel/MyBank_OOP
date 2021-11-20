@@ -2,6 +2,7 @@ package com.company.bank;
 
 import java.util.Arrays;
 public class Bank {
+
     public Bank(BankAccount[] mainAccounts, String name, String location) {
         this.mainAccounts = mainAccounts;
         this.name = name;
@@ -11,7 +12,6 @@ public class Bank {
             a.setBankName(name);
         }
     }
-
     private BankAccount[] mainAccounts;
     private String name;
     private float charge = 5;
